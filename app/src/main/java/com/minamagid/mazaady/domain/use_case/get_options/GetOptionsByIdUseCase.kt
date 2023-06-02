@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GetOptionsByIdUseCase @Inject constructor(val repository: Repository) {
-    suspend operator fun invoke(id: Int): Flow<Resource<GeneralResponse2>> = flow {
+     operator fun invoke(id: Int): Flow<Resource<GeneralResponse2>> = flow {
         try {
             val details = repository.getOptionById(id)
             emit(Resource.Success<GeneralResponse2>(details))

@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
@@ -32,16 +33,16 @@ import kotlinx.android.synthetic.main.process_item.view.*
 
 fun Context.showBottomSheetDialog(
     vw: View,
-    listOfCats: ArrayList<Category?>,
-    listOfSubCats: ArrayList<Children?>,
-    listOfProgressType: ArrayList<Data?>,
+    listOfCats: ArrayList<Category?>?,
+    listOfSubCats: ArrayList<Children?>?,
+    listOfSubOptions: ArrayList<Data?>?,
     listOfOptions: List<Option>?,
     vm: HomeViewModel?,
     type: Int?,
     onDismiss: () -> Unit,
-    value: String
+    value: String,
 
-) {
+    ) {
     var myList: ArrayList<LocalSelectedModel?> = ArrayList<LocalSelectedModel?>()
     myList = MainActivity.getAllGeneral()
     val dialog = BottomSheetDialog(this, R.style.AppBottomSheetDialogTheme)
@@ -163,11 +164,85 @@ fun Context.showBottomSheetDialog(
 
                     MainActivity.getAllGeneral().removeAll(itemsToDelete)
                     MainActivity.addGeneral(item)
+                    if (model.child==true) {
+                        vm?.backSelectedOptionId?.value = model.id ?: 0
+                        vm?.backSelectedOptionTxt?.value = model.slug ?: ""
+                    }
                 }
             }, ArrayList(listOfOptions))
             processType.submitList(listOfOptions)
             binding.dialogRv.adapter = processType
 
+            binding.more.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    val text = s.toString()
+                    vw.processTypeItem.text = Editable.Factory.getInstance().newEditable(text)
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    vw.processTypeItem.text = Editable.Factory.getInstance().newEditable(s)
+                    val item = LocalSelectedModel(0, value, s.toString())
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        val itemsToDelete = mutableListOf<LocalSelectedModel?>()
+
+                        if (!MainActivity.getAllGeneral().isNullOrEmpty()) {
+                            for (it in MainActivity.getAllGeneral()) {
+                                if (item.name == it?.name) {
+                                    itemsToDelete.add(it)
+                                }
+                            }
+                        }
+
+                        MainActivity.getAllGeneral().removeAll(itemsToDelete)
+                        MainActivity.addGeneral(item)
+                    }, 5000)
+                }
+            })
+
+            binding.searchDialog.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    processType.filter.filter(s.toString())
+                }
+
+                override fun afterTextChanged(s: Editable?) {}
+            })
+        }
+        3 -> {
+            binding.header.text = value
+            val processType = OptionsAdapter(object : OptionsAdapter.ClickListener {
+                override fun onItemClick(v: View, model: Option, position: Int) {
+                    dialog.dismiss()
+                    vw.processTypeItem.text = Editable.Factory.getInstance().newEditable(
+                        if (!model.slug.isNullOrEmpty()) model.slug ?: "" else binding.more.text.toString()
+                    )
+                    val item = LocalSelectedModel(0, value, model.slug ?: "")
+
+                    val itemsToDelete = mutableListOf<LocalSelectedModel?>()
+
+                    if (!MainActivity.getAllGeneral().isNullOrEmpty()) {
+                        for (it in MainActivity.getAllGeneral()) {
+                            if (item.name == it?.name) {
+                                itemsToDelete.add(it)
+                            }
+                        }
+                    }
+
+                    MainActivity.getAllGeneral().removeAll(itemsToDelete)
+                    MainActivity.addGeneral(item)
+
+                    if (model.child==true) {
+                        vm?.backSelectedOptionId2?.value = model.id ?: 0
+                        vm?.backSelectedOptionTxt?.value = model.slug ?: ""
+                    }
+                }
+            }, ArrayList(listOfOptions))
+            processType.submitList(listOfOptions)
+            binding.dialogRv.adapter = processType
             binding.more.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 }

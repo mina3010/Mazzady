@@ -1,24 +1,20 @@
 package  com.minamagid.mazaady.presentation.home.adapter
 
 import android.os.Build
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.minamagid.mazaady.databinding.ProcessItemBinding
 import com.minamagid.mazaady.domain.model.category.Data
-import com.minamagid.mazaady.presentation.home.HomeViewModel
-import com.minamagid.mazaady.utlis.showBottomSheetDialog
 
 
-class ProcessAdapter(
+class SubOptionsAdapter(
     private val clickListener: ClickListener?,
-    private val vm: HomeViewModel,
-    private val viewLifecycleOwner: LifecycleOwner,
 ) :
     ListAdapter<Data, BaseViewHolder>(
         USER_COMPARATOR
@@ -42,6 +38,7 @@ class ProcessAdapter(
         return if (position == 0) 0 else 1
     }
 
+
     inner class ViewHolder(var binding: ProcessItemBinding) :
         BaseViewHolder(binding.root) {
         @RequiresApi(Build.VERSION_CODES.P)
@@ -52,35 +49,7 @@ class ProcessAdapter(
                 processTypeItem.setOnClickListener {
                     clickListener?.onItemClick(it,item,position)
                 }
-//                binding.subProcessRV.isVisible = true
-//                binding.subProcessRV2.isVisible = true
-
-                if (item.options?.firstOrNull()?.child==true) {
-                    vm.subOptions.observe(viewLifecycleOwner) {
-                        val adapter = SubOptionsAdapter( object : SubOptionsAdapter.ClickListener{
-                            override fun onItemClick(v: View, model: Data, position: Int) {
-                                itemView.context.showBottomSheetDialog(v,
-                                    null, null, null,model.options,vm, 3,{},model.slug?:"")
-                            }
-                        })
-                        adapter.submitList(it)
-                        binding.subProcessRV.adapter = adapter
-
-                    }
-                    vm.subOptions2.observe(viewLifecycleOwner) {
-                        val adapter = SubOptionsAdapter( object : SubOptionsAdapter.ClickListener{
-                            override fun onItemClick(v: View, model: Data, position: Int) {
-                                itemView.context.showBottomSheetDialog(v,
-                                    null, null, null,model.options,vm, 3,{},model.slug?:"")
-                            }
-                        })
-                        adapter.submitList(it)
-                        binding.subProcessRV2.adapter = adapter
-
-                    }
-
-                }
-
+                binding.subProcessRV.isVisible = true
             }
         }
 

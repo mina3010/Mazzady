@@ -7,17 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.minamagid.mazaady.R
-import com.minamagid.mazaady.domain.model.category.Data
-import com.minamagid.mazaady.domain.model.general.LocalSelectedModel
-import com.minamagid.mazaady.presentation.home.adapter.ProcessAdapter
-import com.minamagid.mazaady.presentation.resultScreen.adapter.ResultAdapter
 import com.minamagid.mazaady.presentation.staticScreen.adapter.CarSellAdapter
-import com.minamagid.mazaady.utlis.showBottomSheetDialog
-import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.fragment_result.view.*
 import kotlinx.android.synthetic.main.fragment_static.view.*
 
 class StaticFragment : Fragment() {

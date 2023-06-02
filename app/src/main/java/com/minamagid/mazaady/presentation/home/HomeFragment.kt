@@ -22,7 +22,6 @@ import com.minamagid.mazaady.utlis.showBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.process_item.view.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -36,6 +35,7 @@ class HomeFragment : Fragment() {
     private val myList: ArrayList<LocalSelectedModel> =ArrayList<LocalSelectedModel>()
 
     var listOfProgressType = ArrayList<Data?>()
+    var listOfSubOptions = ArrayList<Data?>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -130,10 +130,18 @@ class HomeFragment : Fragment() {
                 override fun onItemClick(v: View, model: Data, position: Int) {
                     requireContext().showBottomSheetDialog(v,listOfCats, listOfSubCats, listOfProgressType,model.options,viewModel, 2,{},model.slug?:"")
                 }
-            })
+            },viewModel,viewLifecycleOwner)
             processType.submitList(it)
             viewDataBinding.processRV.adapter = processType
         }
+
+        viewModel.backSelectedOptionId.observe(viewLifecycleOwner) {
+            viewModel.getSubOptions(it,0)
+        }
+        viewModel.backSelectedOptionId2.observe(viewLifecycleOwner) {
+            viewModel.getSubOptions(it,1)
+        }
+
     }
 
 }
