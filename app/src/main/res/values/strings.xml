@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Mazaady</string>
+    <string name="category">Category</string>
+    <string name="sub_category">Sub Category</string>
+    <string name="search">Search</string>
+    <string name="process_type">Process Type</string>
+    <string name="brand">Brand</string>
+    <string name="model">Model</string>
+    <string name="type">Type</string>
+    <string name="other">Other</string>
+    <string name="submit">Submit</string>
+    <string name="your_selected">Your Selected</string>
+</resources>

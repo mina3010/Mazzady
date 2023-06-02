@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+    </style>
+
+    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_active</item>
+
+    </style>
+
+
+    <style name="YellowRatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/color_grey_8494AD</item>
+        <item name="colorControlActivated">@color/color_yellow</item>
+
+    </style>
+
+    <style name="BlueRatingBar" parent="@style/Widget.AppCompat.RatingBar">
+        <item name="colorControlNormal">@color/color_grey_8494AD</item>
+        <item name="colorControlActivated">@color/color_light_blue</item>
+
+    </style>
+</resources>

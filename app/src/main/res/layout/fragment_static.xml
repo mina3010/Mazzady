@@ -1,0 +1,1104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <RelativeLayout
+                android:id="@+id/increaser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutContainer">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawableEnd="@drawable/ic__mozayed"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:fontFamily="@font/tajawal_mid"
+                    android:gravity="center"
+                    android:text="المزايدون"
+                    android:textColor="#B4000000"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="start"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawableStart="@drawable/ic_baseline_arrow_back_ios_new_24"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:fontFamily="@font/tajawal_mid"
+                    android:gravity="center"
+                    android:text="عرض الكل"
+                    android:textColor="#d20653"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/seller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="#59F3CF99"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card3">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="start"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:gravity="center"
+                    android:src="@drawable/ic_fav_round" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableEnd="@drawable/ic_user"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:fontFamily="@font/tajawal_mid"
+                    android:gravity="center"
+                    android:text="البائع"
+                    android:textColor="#B4000000"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/related"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card4">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawableEnd="@drawable/box"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:fontFamily="@font/tajawal_mid"
+                    android:gravity="center"
+                    android:text="منتجات متشابهه"
+                    android:textColor="#B4000000"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="start"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawableStart="@drawable/ic_baseline_arrow_back_ios_new_24"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:fontFamily="@font/tajawal_mid"
+                    android:gravity="center"
+                    android:text="عرض الكل"
+                    android:textColor="#d20653"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_190sdp"
+                android:background="#D2959494"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/car_img" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_190sdp"
+                android:background="#AB515151"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_190sdp"
+                android:background="#65000000"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingTop="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/backBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_back" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/categoryBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_group_1371" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/favBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/calenderBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_calender" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/flagBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_outline_flag_24" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/shareBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_outline_share_24" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/playBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_combined_shape" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/playBtn"
+                app:srcCompat="@drawable/ic_points" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layoutContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/tajawal_mid"
+                        android:gravity="center"
+                        android:text="اسم المزاد"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="start"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:drawableStart="@drawable/ic_baseline_arrow_back_ios_new_24"
+                        android:drawablePadding="@dimen/_4sdp"
+                        android:fontFamily="@font/tajawal_mid"
+                        android:gravity="center"
+                        android:text="تفاصيل المزاد"
+                        android:textColor="#d20653"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatRatingBar
+                        android:id="@+id/rating_bar_review_and_rating"
+                        style="@android:style/Widget.DeviceDefault.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="end"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:isIndicator="false"
+                        android:numStars="5"
+                        android:rating="4"
+                        android:scaleX=".9"
+                        android:scaleY=".9"
+                        android:stepSize="1"
+                        android:theme="@style/YellowRatingBar" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="start"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:drawableStart="@drawable/ic_baseline_arrow_back_ios_new_24"
+                        android:drawablePadding="@dimen/_4sdp"
+                        android:fontFamily="@font/tajawal_mid"
+                        android:gravity="center"
+                        android:text="تقييم المزاد"
+                        android:textColor="#d20653"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignStart="@+id/txt1"
+                        android:layout_alignEnd="@+id/txt2"
+                        android:layout_centerInParent="true"
+                        android:background="#70B8B7B7" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/tajawal_mid"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:text="القيمة الحالية للمزاد"
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:fontFamily="@font/tajawal_mid"
+                        android:gravity="center"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:text="2000 $"
+                        android:textColor="#44215d"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignStart="@+id/txt3"
+                        android:layout_alignEnd="@+id/txt4"
+                        android:layout_centerInParent="true"
+                        android:background="#70B8B7B7" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/tajawal_mid"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:text="القيمة الحالية بعد الضريبة"
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:fontFamily="@font/tajawal_mid"
+                        android:gravity="center"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:text="2005 $"
+                        android:textColor="#44215d"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:fontFamily="@font/tajawal_regular"
+                    android:gravity="center"
+                    android:text="code 1234"
+                    android:textColor="#888787"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/grade_bg"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|bottom"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_11sdp"
+                        android:paddingTop="@dimen/_4sdp"
+                        android:paddingBottom="@dimen/_2sdp"
+                        android:weightSum="2">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginHorizontal="@dimen/_4sdp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#EC9EB9"
+                            android:fontFamily="@font/tajawal_bold"
+                            android:text="انسحاب"
+                            android:textColor="#d20653"
+                            android:textSize="@dimen/_7ssp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginHorizontal="@dimen/_4sdp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#d20653"
+                            android:fontFamily="@font/tajawal_mid"
+                            android:text="شراء الان"
+                            android:textSize="@dimen/_7ssp" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_weight="1"
+                        android:gravity="top"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/_6sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="end"
+                            android:layout_marginHorizontal="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:fontFamily="@font/tajawal_mid"
+                            android:gravity="center"
+                            android:text="سعر الشراء الفوري"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11ssp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="end"
+                            android:layout_marginHorizontal="@dimen/_20sdp"
+                            android:fontFamily="@font/tajawal_mid"
+                            android:gravity="center"
+                            android:paddingEnd="@dimen/_5sdp"
+                            android:text="200 $"
+                            android:textColor="#44215d"
+                            android:textSize="@dimen/_12ssp"
+                            android:textStyle="bold" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/points">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_8ssp"
+                    android:weightSum="2">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/tajawal_regular"
+                            android:gravity="center"
+                            android:text="بتاريخ"
+                            android:textSize="@dimen/_13ssp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/tajawal_mid"
+                            android:gravity="center"
+                            android:text="26-11-2021"
+                            android:textColor="#44215d"
+                            android:textSize="@dimen/_13ssp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/tajawal_mid"
+                            android:gravity="center"
+                            android:text="13 : 59 : 00"
+                            android:textColor="#44215d"
+                            android:textSize="@dimen/_8ssp"
+                            android:textStyle="bold" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/tajawal_regular"
+                            android:gravity="center"
+                            android:text="المزاد يبدأ بعد"
+                            android:textSize="@dimen/_13ssp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/tajawal_mid"
+                            android:gravity="center"
+                            android:text="31 : 22 : 55"
+                            android:textColor="#FDD923"
+                            android:textSize="@dimen/_14ssp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/tajawal_mid"
+                            android:gravity="center"
+                            android:text="دقيقة :   ساعة  : يوم"
+                            android:textColor="#FDD923"
+                            android:textSize="@dimen/_8ssp"
+                            android:textStyle="bold" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/increaser">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_4sdp"
+                    android:layout_marginStart="@dimen/_40sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_blue_corner_5"
+                    android:backgroundTint="#FFEADC"
+                    android:fontFamily="@font/tajawal_bold"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:text="+ 20"
+                    android:textColor="#F8BF2F"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/userImg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/userImg" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="6dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/tajawal_mid"
+                    android:gravity="center"
+                    android:text="اسم المزاد"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/userImg"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:fontFamily="@font/tajawal_regular"
+                    android:gravity="center"
+                    android:text="13 59 1234"
+                    android:textColor="#888787"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/username"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toStartOf="@+id/username"
+                    app:layout_constraintTop_toBottomOf="@+id/username" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userImg"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:src="@drawable/man1"
+                    app:circularflow_defaultRadius="4dp"
+                    app:civ_border_color="@color/grey_dark"
+                    app:civ_border_width="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_4sdp"
+                    android:layout_marginStart="@dimen/_40sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_blue_corner_5"
+                    android:backgroundTint="#FFEADC"
+                    android:fontFamily="@font/tajawal_bold"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_4sdp"
+                    android:text="+ 20"
+                    android:textColor="#F8BF2F"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/userImg2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/userImg2" />
+
+                <TextView
+                    android:id="@+id/username2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="6dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/tajawal_mid"
+                    android:gravity="center"
+                    android:text="اسم المزاد"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/userImg2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:fontFamily="@font/tajawal_regular"
+                    android:gravity="center"
+                    android:text="13 59 1234"
+                    android:textColor="#888787"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/username2"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toStartOf="@+id/username2"
+                    app:layout_constraintTop_toBottomOf="@+id/username2" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userImg2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:src="@drawable/man1"
+                    app:circularflow_defaultRadius="4dp"
+                    app:civ_border_color="@color/grey_dark"
+                    app:civ_border_width="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_4sdp"
+                    android:layout_marginStart="@dimen/_40sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_blue_corner_5"
+                    android:backgroundTint="#FFEADC"
+                    android:fontFamily="@font/tajawal_bold"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:text="+ 20"
+                    android:textColor="#F8BF2F"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/userImg3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/userImg3" />
+
+                <TextView
+                    android:id="@+id/username3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="6dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/tajawal_mid"
+                    android:gravity="center"
+                    android:text="اسم المزاد"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/userImg3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:fontFamily="@font/tajawal_regular"
+                    android:gravity="center"
+                    android:text="13 59 1234"
+                    android:textColor="#888787"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/username3"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toStartOf="@+id/username3"
+                    app:layout_constraintTop_toBottomOf="@+id/username3" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userImg3"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:src="@drawable/man1"
+                    app:circularflow_defaultRadius="4dp"
+                    app:civ_border_color="@color/grey_dark"
+                    app:civ_border_width="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#59F3CF99"
+                android:paddingBottom="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seller">
+
+                <TextView
+                    android:id="@+id/username4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:ellipsize="end"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:fontFamily="@font/tajawal_mid"
+                    android:gravity="center"
+                    android:text="اسم البائع"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/userImg4"
+                    app:layout_constraintTop_toTopOf="@+id/userImg4" />
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/rating_bar_review_and_rating2"
+                    style="@android:style/Widget.DeviceDefault.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="-10dp"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:rating="4"
+                    android:scaleX=".8"
+                    android:scaleY=".8"
+                    android:stepSize="1"
+                    android:theme="@style/YellowRatingBar"
+                    app:layout_constraintEnd_toEndOf="@+id/appCompatTextView4"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:fontFamily="@font/tajawal_regular"
+                    android:gravity="center"
+                    android:text="+13 59 1234"
+                    android:textColor="#888787"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/username4"
+                    app:layout_constraintStart_toStartOf="@+id/username4"
+                    app:layout_constraintTop_toBottomOf="@+id/username4" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="end"
+                    android:fontFamily="@font/tajawal_regular"
+                    android:gravity="center"
+                    android:text="4 منتجات"
+                    android:textColor="#888787"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/appCompatTextView4"
+                    app:layout_constraintTop_toBottomOf="@+id/rating_bar_review_and_rating2" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userImg4"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:src="@drawable/man1"
+                    app:circularflow_defaultRadius="4dp"
+                    app:civ_border_color="@color/grey_dark"
+                    app:civ_border_width="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/productsRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/related"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingBottom="@dimen/_120sdp"
+                tools:itemCount="2"
+                android:orientation="horizontal"
+                tools:listitem="@layout/car_item"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:elevation="@dimen/_10sdp"
+        app:elevation="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/pay"
+            android:layout_marginStart="@dimen/_100sdp"
+            android:paddingHorizontal="@dimen/_11sdp"
+            android:paddingBottom="@dimen/_2sdp"
+            android:paddingTop="@dimen/_4sdp"
+            android:layout_gravity="center|bottom"
+            android:layout_weight="1"
+            android:weightSum="3">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:text="+10000"
+                android:layout_weight="1"
+                android:textSize="@dimen/_7ssp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:fontFamily="@font/tajawal_bold"
+                android:textColor="@color/white"
+                android:backgroundTint="#FF3D00"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:text="+10000"
+                android:layout_weight="1"
+                android:textSize="@dimen/_7ssp"
+                android:textColor="@color/white"
+                android:backgroundTint="#FF3D00"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:fontFamily="@font/tajawal_bold" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:text="+10000"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:textSize="@dimen/_7ssp"
+                android:fontFamily="@font/tajawal_mid"
+                android:textColor="@color/white"
+                android:backgroundTint="#FF3D00"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_above="@+id/pay"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_6sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:fontFamily="@font/tajawal_mid"
+                android:gravity="center"
+                android:text="القيمة الحالية للمزاد"
+                android:textColor="#A6000000"
+                android:textSize="@dimen/_9ssp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:fontFamily="@font/tajawal_mid"
+                android:gravity="center"
+                android:paddingEnd="@dimen/_5sdp"
+                android:text="200 $"
+                android:textColor="#44215d"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <EditText
+            android:id="@+id/pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_45sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rounded_blue_corner_5"
+            android:hint="اكتب المبلغ"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingStart="@dimen/_30sdp"
+            android:paddingEnd="@dimen/_30sdp"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:fontFamily="@font/tajawal_mid" />
+
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:rotation="180"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_outline_send_24" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

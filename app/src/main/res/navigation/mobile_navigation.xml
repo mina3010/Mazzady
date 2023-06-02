@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.minamagid.mazaady.presentation.home.HomeFragment"
+        android:label="home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_result"
+            app:destination="@id/navigation_result" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_static"
+            app:destination="@id/navigation_static" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_result"
+        android:name="com.minamagid.mazaady.presentation.resultScreen.ResultFragment"
+        android:label="result"
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/action_navigation_result_to_navigation_static"
+            app:destination="@id/navigation_static" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_static"
+        android:name="com.minamagid.mazaady.presentation.staticScreen.StaticFragment"
+        android:label="static"
+        tools:layout="@layout/fragment_static" >
+    </fragment>
+
+</navigation>
