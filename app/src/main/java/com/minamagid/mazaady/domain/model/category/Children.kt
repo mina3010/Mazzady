@@ -20,5 +20,6 @@ data class Children(
     @SerializedName("name")
     var name: String?,
     @SerializedName("slug")
-    var slug: String?
+    var slug: String?,
+    var isSelected :Boolean?= false
 )

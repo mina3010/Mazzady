@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.minamagid.mazaady.domain.model.category.Category
 import com.minamagid.mazaady.domain.model.category.Children
 import com.minamagid.mazaady.domain.model.category.Data
 import com.minamagid.mazaady.domain.model.general.LocalSelectedModel
+import com.minamagid.mazaady.domain.model.options.Option
 import com.minamagid.mazaady.presentation.home.adapter.ProcessAdapter
 import com.minamagid.mazaady.utlis.showBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,10 +34,8 @@ class HomeFragment : Fragment() {
     private var listOfProgressTypeStrings = ArrayList<String?>()
     private var listOfCats = ArrayList<Category?>()
     private var listOfSubCats = ArrayList<Children?>()
-    private val myList: ArrayList<LocalSelectedModel> =ArrayList<LocalSelectedModel>()
-
     var listOfProgressType = ArrayList<Data?>()
-    var listOfSubOptions = ArrayList<Data?>()
+    val TAG="mina_home"
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -61,10 +61,9 @@ class HomeFragment : Fragment() {
                 it,
                 listOfCats,
                 ArrayList(emptyList()),
-                listOfProgressType,
                 emptyList(),
                 viewModel
-                , 0, {}, ""
+                , 0, "", -1
             )
         }
         viewDataBinding.subCategorySP.setOnClickListener {
@@ -72,10 +71,9 @@ class HomeFragment : Fragment() {
                 it,
                 listOfCats,
                 listOfSubCats,
-                listOfProgressType,
                 emptyList(),
                 viewModel
-                , 1, {}, ""
+                , 1,  "", -1
             )
         }
 
@@ -88,10 +86,14 @@ class HomeFragment : Fragment() {
             editor.apply()
             MainActivity.clearGeneral()
 
+            viewModel.isPosition.value = -1
+            viewModel.isSelectedItem.value = false
             it.findNavController().navigate(R.id.action_navigation_home_to_navigation_result)
         }
 
         viewDataBinding.goToStaticBtn.setOnClickListener {
+            viewModel.isPosition.value = -1
+            viewModel.isSelectedItem.value = false
             it.findNavController().navigate(R.id.action_navigation_home_to_navigation_static)
         }
     }
@@ -128,7 +130,27 @@ class HomeFragment : Fragment() {
             }
             val processType = ProcessAdapter( object : ProcessAdapter.ClickListener{
                 override fun onItemClick(v: View, model: Data, position: Int) {
-                    requireContext().showBottomSheetDialog(v,listOfCats, listOfSubCats, listOfProgressType,model.options,viewModel, 2,{},model.slug?:"")
+                    val list = ArrayList<Option>()
+                    list.add(Option(null,-1,"Other",null,"Other",false))
+                    list.addAll(ArrayList(model.options?: emptyList()))
+                    requireContext().showBottomSheetDialog(v,listOfCats, listOfSubCats,list,viewModel, 2,model.slug?:"",position)
+                }
+
+                override fun onSpecifyData( model: Data,txt: String) {
+                    Log.d(TAG,"$txt||$model")
+                    val item = LocalSelectedModel(0, model.slug?:"",txt)
+                    val itemsToDelete = mutableListOf<LocalSelectedModel?>()
+
+                    if (MainActivity.getAllGeneral().isNotEmpty()) {
+                        for (it in MainActivity.getAllGeneral()) {
+                            if (item.name == it?.name) {
+                                itemsToDelete.add(it)
+                            }
+                        }
+                    }
+
+                    MainActivity.getAllGeneral().removeAll(itemsToDelete)
+                    MainActivity.addGeneral(item)
                 }
             },viewModel,viewLifecycleOwner)
             processType.submitList(it)

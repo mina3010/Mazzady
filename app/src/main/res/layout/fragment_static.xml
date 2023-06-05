@@ -139,16 +139,46 @@
                     android:textStyle="bold" />
             </RelativeLayout>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/appCompatImageView"
+
+
+            <RelativeLayout
+                android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_190sdp"
-                android:background="#D2959494"
-                android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/car_img" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/mViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:id="@+id/indicatorLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal" />
+
+            </RelativeLayout>
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_marginBottom="55dp"
+                android:elevation="@dimen/_11sdp"
+                android:background="@drawable/rounded_blue_corner_5"
+                android:backgroundTint="#83434343"
+                app:ci_drawable="@drawable/dot_selected"
+                app:ci_drawable_unselected="@drawable/dot_unselected"
+                app:ci_height="@dimen/_5sdp"
+                app:ci_width="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="@id/viewPager"
+                app:layout_constraintEnd_toEndOf="@id/viewPager"
+                app:layout_constraintStart_toStartOf="@id/viewPager" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
@@ -166,7 +196,7 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/_10sdp"
                 android:paddingTop="@dimen/_5sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+                app:layout_constraintBottom_toBottomOf="@+id/viewPager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -239,7 +269,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+                app:layout_constraintBottom_toBottomOf="@+id/viewPager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -250,7 +280,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/viewPager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/playBtn"

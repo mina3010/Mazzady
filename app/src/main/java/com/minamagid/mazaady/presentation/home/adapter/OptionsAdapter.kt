@@ -78,8 +78,15 @@ class OptionsAdapter(
             val item = getItem(position)
             binding.run {
                 txtSlug.text = item.slug?:""
-                txtSlug.setOnClickListener {
-                    clickListener?.onItemClick(it,item,position)
+
+                if (item.id == -1){
+                    txtSlug.setOnClickListener {
+                        clickListener?.onOtherClick(it,item,position)
+                    }
+                }else{
+                    txtSlug.setOnClickListener {
+                        clickListener?.onItemClick(it,item,position)
+                    }
                 }
 
             }
@@ -107,6 +114,11 @@ class OptionsAdapter(
 
     interface ClickListener {
         fun onItemClick(
+            v: View,
+            model: Option,
+            position: Int
+        )
+        fun onOtherClick(
             v: View,
             model: Option,
             position: Int

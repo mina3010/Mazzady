@@ -86,6 +86,7 @@ class SubCategoriesAdapter(
                 txtSlug.setOnClickListener {
                     clickListener?.onItemClick(it,item,position)
                 }
+
             }
         }
     }

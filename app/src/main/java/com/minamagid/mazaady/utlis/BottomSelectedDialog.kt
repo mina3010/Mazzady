@@ -3,21 +3,16 @@ package com.minamagid.mazaady.utlis
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Handler
-import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.*
-import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
-import android.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.gson.Gson
 import com.minamagid.mazaady.MainActivity
 import com.minamagid.mazaady.R
 import com.minamagid.mazaady.databinding.DialogSpinnerBinding
@@ -28,23 +23,20 @@ import com.minamagid.mazaady.domain.model.general.LocalSelectedModel
 import com.minamagid.mazaady.domain.model.options.Option
 import com.minamagid.mazaady.presentation.home.HomeViewModel
 import com.minamagid.mazaady.presentation.home.adapter.*
-import kotlinx.android.synthetic.main.dialog_spinner.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.process_item.view.*
 
 fun Context.showBottomSheetDialog(
     vw: View,
     listOfCats: ArrayList<Category?>?,
     listOfSubCats: ArrayList<Children?>?,
-    listOfSubOptions: ArrayList<Data?>?,
     listOfOptions: List<Option>?,
     vm: HomeViewModel?,
     type: Int?,
-    onDismiss: () -> Unit,
     value: String,
+    positionItem: Int,
 
     ) {
-    var myList: ArrayList<LocalSelectedModel?> = ArrayList<LocalSelectedModel?>()
-    myList = MainActivity.getAllGeneral()
     val dialog = BottomSheetDialog(this, R.style.AppBottomSheetDialogTheme)
     dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
     dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -150,6 +142,9 @@ fun Context.showBottomSheetDialog(
                     vw.processTypeItem.text = Editable.Factory.getInstance().newEditable(
                         if (!model.slug.isNullOrEmpty()) model.slug ?: "" else binding.more.text.toString()
                     )
+
+                    vm?.isSelectedItem?.value = false
+                    vm?.isPosition?.value = -1
                     val item = LocalSelectedModel(0, value, model.slug ?: "")
 
                     val itemsToDelete = mutableListOf<LocalSelectedModel?>()
@@ -162,45 +157,24 @@ fun Context.showBottomSheetDialog(
                         }
                     }
 
-                    MainActivity.getAllGeneral().removeAll(itemsToDelete)
+                    MainActivity.getAllGeneral().removeAll(itemsToDelete.toSet())
                     MainActivity.addGeneral(item)
                     if (model.child==true) {
                         vm?.backSelectedOptionId?.value = model.id ?: 0
                         vm?.backSelectedOptionTxt?.value = model.slug ?: ""
                     }
                 }
+
+                override fun onOtherClick(v: View, model: Option, position: Int) {
+                    vw.processTypeItem.text = Editable.Factory.getInstance().newEditable("Other")
+                    dialog.dismiss()
+                    vm?.isSelectedItem?.value = true
+                    vm?.isPosition?.value = positionItem
+
+                }
             }, ArrayList(listOfOptions))
             processType.submitList(listOfOptions)
             binding.dialogRv.adapter = processType
-
-            binding.more.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    val text = s.toString()
-                    vw.processTypeItem.text = Editable.Factory.getInstance().newEditable(text)
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                    vw.processTypeItem.text = Editable.Factory.getInstance().newEditable(s)
-                    val item = LocalSelectedModel(0, value, s.toString())
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        val itemsToDelete = mutableListOf<LocalSelectedModel?>()
-
-                        if (!MainActivity.getAllGeneral().isNullOrEmpty()) {
-                            for (it in MainActivity.getAllGeneral()) {
-                                if (item.name == it?.name) {
-                                    itemsToDelete.add(it)
-                                }
-                            }
-                        }
-
-                        MainActivity.getAllGeneral().removeAll(itemsToDelete)
-                        MainActivity.addGeneral(item)
-                    }, 5000)
-                }
-            })
 
             binding.searchDialog.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -217,6 +191,9 @@ fun Context.showBottomSheetDialog(
             val processType = OptionsAdapter(object : OptionsAdapter.ClickListener {
                 override fun onItemClick(v: View, model: Option, position: Int) {
                     dialog.dismiss()
+                    vm?.isSelectedItem?.value = false
+                    vm?.isPosition?.value = -1
+
                     vw.processTypeItem.text = Editable.Factory.getInstance().newEditable(
                         if (!model.slug.isNullOrEmpty()) model.slug ?: "" else binding.more.text.toString()
                     )
@@ -232,7 +209,7 @@ fun Context.showBottomSheetDialog(
                         }
                     }
 
-                    MainActivity.getAllGeneral().removeAll(itemsToDelete)
+                    MainActivity.getAllGeneral().removeAll(itemsToDelete.toSet())
                     MainActivity.addGeneral(item)
 
                     if (model.child==true) {
@@ -240,37 +217,18 @@ fun Context.showBottomSheetDialog(
                         vm?.backSelectedOptionTxt?.value = model.slug ?: ""
                     }
                 }
+
+                override fun onOtherClick(v: View, model: Option, position: Int) {
+                    vw.processTypeItem.text = Editable.Factory.getInstance().newEditable("Other")
+                    model.isSelected = true
+                    dialog.dismiss()
+                    vm?.isSelectedItem?.value = true
+                    vm?.isPosition?.value = positionItem
+                }
             }, ArrayList(listOfOptions))
             processType.submitList(listOfOptions)
             binding.dialogRv.adapter = processType
-            binding.more.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                }
 
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    val text = s.toString()
-                    vw.processTypeItem.text = Editable.Factory.getInstance().newEditable(text)
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                    vw.processTypeItem.text = Editable.Factory.getInstance().newEditable(s)
-                    val item = LocalSelectedModel(0, value, s.toString())
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        val itemsToDelete = mutableListOf<LocalSelectedModel?>()
-
-                        if (!MainActivity.getAllGeneral().isNullOrEmpty()) {
-                            for (it in MainActivity.getAllGeneral()) {
-                                if (item.name == it?.name) {
-                                    itemsToDelete.add(it)
-                                }
-                            }
-                        }
-
-                        MainActivity.getAllGeneral().removeAll(itemsToDelete)
-                        MainActivity.addGeneral(item)
-                    }, 5000)
-                }
-            })
 
             binding.searchDialog.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -285,9 +243,10 @@ fun Context.showBottomSheetDialog(
 
     }
 
-    dialog.dialogRv.setOnClickListener { onDismiss() }
     dialog.setOnDismissListener { dialog.dismiss() }
     binding.run {
-        closeDialog.setOnClickListener { onDismiss() }
+        closeDialog.setOnClickListener { dialog.dismiss() }
     }
 }
+
+

@@ -59,7 +59,7 @@ xmlns:tools="http://schemas.android.com/tools">
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/header" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <TextView
                 android:id="@+id/more"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,7 +69,7 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:textColor="@color/black"
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_marginHorizontal="@dimen/_20sdp"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:textSize="@dimen/_14ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

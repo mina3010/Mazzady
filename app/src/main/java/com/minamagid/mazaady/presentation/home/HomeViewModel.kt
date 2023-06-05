@@ -28,6 +28,8 @@ class HomeViewModel @Inject constructor(val getAllCatsUseCase: GetAllCatsUseCase
     val subOptions2 = MutableLiveData<ArrayList<Data?>>()
     val subCats = MutableLiveData<List<Children?>>()
     var backSelected =MutableLiveData<String>("")
+    var isSelectedItem =MutableLiveData<Boolean>(false)
+    var isPosition =MutableLiveData<Int>(-1)
     var backSelectedSubCatsId =MutableLiveData<Int>(0)
     var backSelectedSubCats =MutableLiveData<String>("")
 
