@@ -1,10 +1,12 @@
 package com.minamagid.mazaady.presentation.home
+import androidx.lifecycle.Observer
 import com.minamagid.mazaady.common.Resource
 import com.minamagid.mazaady.data.repository.FakeRepository
 import com.minamagid.mazaady.domain.model.category.Data
 import com.minamagid.mazaady.domain.model.category.Statistics
 import com.minamagid.mazaady.domain.model.general.GeneralResponse
 import com.minamagid.mazaady.domain.use_case.get_all_cats.GetAllCatsUseCase
+import com.minamagid.mazaady.domain.use_case.get_options.GetOptionsByIdUseCase
 import com.minamagid.mazaady.domain.use_case.get_sub_cats.GetSubCategoryByIdUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -13,6 +15,7 @@ import kotlinx.coroutines.test.*
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.extension.TestWatcher
 import org.mockito.Mock
@@ -25,21 +28,45 @@ import org.mockito.internal.verification.Description
 class HomeViewModelTest{
     @Mock
     private lateinit var getAllCatsUseCase: GetAllCatsUseCase
+    @Mock
     private lateinit var getSubCategoryByIdUseCase: GetSubCategoryByIdUseCase
+    @Mock
+    private lateinit var getOptionsByIdUseCase: GetOptionsByIdUseCase
     private lateinit var fakeRepository: FakeRepository
-
     private lateinit var viewModel: HomeViewModel
 
+//    @get:Rule
+//    val instantExecutorRule = InstantTaskExecutorRule()
+
+    private lateinit var testDispatcher: TestCoroutineDispatcher
+    private lateinit var testScope: TestCoroutineScope
+
+
+    @Mock
+    private lateinit var stateObserver: Observer<MainState>
     @Before
     fun setup() {
         initMocks(this)
         MockitoAnnotations.openMocks(this)
+        testDispatcher = TestCoroutineDispatcher()
+        testScope = TestCoroutineScope(testDispatcher)
+
+        Dispatchers.setMain(testDispatcher)
+        MockitoAnnotations.openMocks(this)
         fakeRepository = FakeRepository()
         getSubCategoryByIdUseCase = GetSubCategoryByIdUseCase(fakeRepository)
-        viewModel = HomeViewModel(getAllCatsUseCase,getSubCategoryByIdUseCase)
+        getOptionsByIdUseCase = GetOptionsByIdUseCase(fakeRepository)
+        getAllCatsUseCase = GetAllCatsUseCase(fakeRepository)
+        viewModel = HomeViewModel(getAllCatsUseCase,getSubCategoryByIdUseCase,getOptionsByIdUseCase)
 
     }
 
+    @After
+    fun cleanup() {
+        Dispatchers.resetMain() // Reset the main dispatcher after the test finishes
+        testScope.cleanupTestCoroutines()
+        testDispatcher.cleanupTestCoroutines()
+    }
     @Test
     fun `getProcessType should emit the correct states`() = runBlockingTest {
         val catId = 123

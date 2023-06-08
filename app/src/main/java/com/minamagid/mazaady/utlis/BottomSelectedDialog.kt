@@ -63,22 +63,25 @@ fun Context.showBottomSheetDialog(
                 override fun onItemClick(v: View, model: Category, position: Int) {
                     vm?.backSelectedSubCats?.value = ""
                     vm?.backSelectedSubCatsId?.value = 0
-
+                    vm?.processTypeRemote?.value = ArrayList(emptyList())
+                    vm?.isSelectedItem?.value = false
+                    vm?.isPosition?.value = -1
                     vm?.backSelected?.value = model.slug ?: ""
                     vm?.subCats?.value = model.children
                     dialog.dismiss()
                     val item = LocalSelectedModel(0, "Main Category", model.slug ?: "")
+                    val itemsToDelete = mutableListOf<LocalSelectedModel?>()
+
                     if (!MainActivity.getAllGeneral().isNullOrEmpty()) {
-                        MainActivity.getAllGeneral().forEach {
+                        for (it in MainActivity.getAllGeneral()) {
                             if (item.name == it?.name) {
-                                MainActivity.deleteGeneral(it)
-                            }else{
-                                MainActivity.addGeneral(item)
+                                itemsToDelete.add(it)
                             }
                         }
-                    }else{
-                        MainActivity.addGeneral(item)
                     }
+
+                    MainActivity.getAllGeneral().removeAll(itemsToDelete)
+                    MainActivity.addGeneral(item)
 
                 }
             },ArrayList(listOfCats))
@@ -102,6 +105,8 @@ fun Context.showBottomSheetDialog(
                 override fun onItemClick(v: View, model: Children, position: Int) {
                     vm?.backSelectedSubCats?.value = model.slug
                     vm?.backSelectedSubCatsId?.value = model.id
+                    vm?.isSelectedItem?.value = false
+                    vm?.isPosition?.value = -1
                     dialog.dismiss()
                     val item = LocalSelectedModel(0, "Sub Category", model.slug ?: "")
 
@@ -170,7 +175,7 @@ fun Context.showBottomSheetDialog(
                     dialog.dismiss()
                     vm?.isSelectedItem?.value = true
                     vm?.isPosition?.value = positionItem
-
+                    vm?.backSelectedOptionId?.value = -1
                 }
             }, ArrayList(listOfOptions))
             processType.submitList(listOfOptions)

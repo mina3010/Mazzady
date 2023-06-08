@@ -52,10 +52,4 @@ class GetAllCatsUseCaseTest {
     }
 
 
-    private fun mockHttpException(): HttpException {
-        val errorResponseBody = ResponseBody.create("application/json".toMediaTypeOrNull(), "Error response")
-        val errorResponse = Response.error<Any>(404, errorResponseBody)
-        return HttpException(errorResponse)
-    }
-
 }
